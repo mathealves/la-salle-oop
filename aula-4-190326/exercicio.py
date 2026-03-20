@@ -83,7 +83,5 @@ while True:
                 product.setPrice(price)
                 product.setCost(cost)
     if user_input == '5':
-        sys.exit()
-
-            
+        sys.exit() 
         
