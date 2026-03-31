@@ -65,7 +65,8 @@ while True:
         codigoLivro = int(input('codigo livro: '))
         tituloLivro = input('titulo livro: ')
         codigoISBN = input('codigo ISBN: ')
-        editoraLivro = int(input(f"editoras disponíveis: {[editora.getCodigoEditora() for editora in editoras]}\ncodigo editora do livro: "))
+        editoraInput = int(input(f"editoras disponíveis: {[editora.getCodigoEditora() for editora in editoras]}\ncodigo editora do livro: "))
+        editoraLivro = next((editora for editora in editoras if editora.getCodigoEditora() == editoraInput), None)
         livro = Livro(codigoLivro, tituloLivro, codigoISBN, editoraLivro)
         livros.append(livro)
     if user_input == '3':
@@ -75,7 +76,7 @@ while True:
             razaoSocialEditora = input('razao social da editora: ')
             for editora in editoras:
                 if editora.getRazaoSocial() == razaoSocialEditora:
-                    print(f"editora {editora.getCodigoEditora()}: razão social: {editora.getRazaoSocial()}, nome contato: {editora.getNomeContato()}, telefone: {editora.getTelefone()}")
+                    print(f"código da editora: {editora.getCodigoEditora()}, razão social: {editora.getRazaoSocial()}, nome contato: {editora.getNomeContato()}, telefone: {editora.getTelefone()}")
     if user_input == '4':
         if not livros:
             print('não há livros cadastrados')
@@ -83,6 +84,6 @@ while True:
             tituloLivro = input('titulo do livro: ')
             for livro in livros:
                 if livro.getTituloLivro() == tituloLivro:
-                    print(f"livro {livro.getCodigoLivro()}: título: {livro.getTituloLivro()}, ISBN: {livro.getCodigoISBN()}, editora: {livro.getEditora().getRazaoSocial()}")
+                    print(f"código do livro: {livro.getCodigoLivro()}, título: {livro.getTituloLivro()}, ISBN: {livro.getCodigoISBN()}, editora: {livro.getEditora().getRazaoSocial()}")
     if user_input == '5':
         break
